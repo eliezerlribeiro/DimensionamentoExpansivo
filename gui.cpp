@@ -1,27 +1,8 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_gfxPrimitives.h"
 
-#include "lib_grafo.hpp"
-
-#include "FEvento.h"
-
-class App : public FEvento {
-	public:
-		App();
-		bool NaExecucao();
-		
-	private:
-		bool rodando;
-		SDL_Surface * planoExibicao;
-
-	public:
-		bool NoInicio();
-		void NoEvento(SDL_Event *);
-			void OnExit();
-		void NoLaco();
-		void NaRenderizacao();
-		void NaLimpeza();
-};
+//#include "lib_grafo.hpp"
+#include "gui.h"
 
 App::App() {
 	planoExibicao = NULL;
