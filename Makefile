@@ -8,7 +8,7 @@ CPPFLAGS=-std=c++11 -Wall -g `sdl-config --cflags`
 LDFLAGS=`sdl-config --libs` -lm -lSDL -lSDL_image -lSDL_gfx
 
 gui: $(OBJ) gui.o
-	$(CC) -o $(EXEC) $(OBJ) gui.o $(CPPFLAGS) $(LDFLAGS)
+	$(CC) -o $(EXEC) $(OBJ) $(CPPFLAGS) $(LDFLAGS)
 gui.o: gui.h gui.cpp
 	rm -rf gui.o
 	$(CC) $(CPPFLAGS) -c gui.cpp

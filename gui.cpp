@@ -1,8 +1,15 @@
 #include "SDL/SDL.h"
 #include "SDL/SDL_gfxPrimitives.h"
 
-//#include "lib_grafo.hpp"
 #include "gui.h"
+
+
+int main(int argc, char* argv[]) {
+
+	App grafoGui;
+	
+	return grafoGui.NaExecucao();
+}
 
 App::App() {
 	planoExibicao = NULL;
@@ -73,11 +80,4 @@ void App::NaRenderizacao() {
 
 void App::NaLimpeza() {
 	SDL_Quit();
-}
-
-int mainGui(int argc, char* argv[]) {
-
-	App grafoGui;
-	
-	return grafoGui.NaExecucao();
 }
