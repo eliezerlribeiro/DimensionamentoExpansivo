@@ -230,8 +230,17 @@ void App::NoLaco() {
 		}
 		if(Entidade::listaEntidades[i]->x + Entidade::listaEntidades[i]->Dx < planoExibicao->h)
 			Entidade::listaEntidades[i]->x += Entidade::listaEntidades[i]->Dx;
+			
 		if(Entidade::listaEntidades[i]->y + Entidade::listaEntidades[i]->Dy < planoExibicao->w)
 			Entidade::listaEntidades[i]->y += Entidade::listaEntidades[i]->Dy;
+		
+		if(Entidade::listaEntidades[i]->x < 0){
+			Entidade::listaEntidades[i]->x = 1;
+		}
+		
+		if(Entidade::listaEntidades[i]->y < 0){
+			Entidade::listaEntidades[i]->y = 1;
+		}
 		
 		Entidade::listaEntidades[i]->Dx *= damping;
 		Entidade::listaEntidades[i]->Dy *= damping;
