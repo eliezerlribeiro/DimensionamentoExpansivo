@@ -177,16 +177,57 @@ void App::OnExit() {
 	rodando = false;
 }
 
+double spring = 2; // atração
+double damping = 2;
+double charge = 2000;  // Repulsão
+double Mass = 0.2;
 
 void App::NoLaco() {
-	/**
 	for(int i = 0;i < (int) Entidade::listaEntidades.size();i++) {
 		if(!Entidade::listaEntidades[i]) continue;
+		for(int j = 0;j < (int) Entidade::listaEntidades.size();j++) {
+			if(!Entidade::listaEntidades[i]) continue;
+			if(j != i){
+				double dx = Entidade::listaEntidades[j]->x - Entidade::listaEntidades[i]->x;
+				double dy = Entidade::listaEntidades[j]->y - Entidade::listaEntidades[i]->y;
+				double hypotenuse = sqrt(pow(dx, 2) + pow(dy, 2));
+				double force = 0;
+				if (rand()%1){
+				   force = (hypotenuse -spring) / 2.0;
+				}
+				else{
+				   force = -((Entidade::listaEntidades[j]->raio * Entidade::listaEntidades[i]->raio) / pow(hypotenuse, 2)) * charge;
+				}
+				dx /= hypotenuse;
+				dy /= hypotenuse;
+				dx *= force;
+				dy *= force;
+				Entidade::listaEntidades[i]->Dx += dx;
+				Entidade::listaEntidades[i]->Dy += dy;
+			}
+		}
+		if(Entidade::listaEntidades[i]->x + Entidade::listaEntidades[i]->Dx < planoExibicao->h)
+			Entidade::listaEntidades[i]->x += Entidade::listaEntidades[i]->Dx;
+			
+		if(Entidade::listaEntidades[i]->y + Entidade::listaEntidades[i]->Dy < planoExibicao->w)
+			Entidade::listaEntidades[i]->y += Entidade::listaEntidades[i]->Dy;
+		
+		if(Entidade::listaEntidades[i]->x < 0){
+			Entidade::listaEntidades[i]->x = 1;
+		}
+		
+		if(Entidade::listaEntidades[i]->y < 0){
+			Entidade::listaEntidades[i]->y = 1;
+		}
+		
+		Entidade::listaEntidades[i]->Dx *= damping;
+		Entidade::listaEntidades[i]->Dy *= damping;
 		Entidade::listaEntidades[i]->NoLaco();
+	
 	}
-	**/
 	SDL_Delay(100);
 }
+
 void App::NaRenderizacao() {
 	SDL_FillRect(planoExibicao, NULL, SDL_MapRGB(planoExibicao->format, 0, 0, 0));
 /**

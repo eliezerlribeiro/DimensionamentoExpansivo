@@ -4,6 +4,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+#include <string>
 #include <sstream>
 #include <ctime>
 
@@ -12,6 +13,7 @@
 
 #include "lib_grafo.hpp"
 #include "FEvento.h"
+#include "Entidade.h"
 
 using namespace std;
 

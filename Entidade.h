@@ -19,7 +19,10 @@ public:
 	virtual ~Entidade();
 	static vector<Entidade*> listaEntidades;
 	int x;
+	int Dx;
 	int y;
+	int Dy;
+	int raio;
 
 	SDL_Color cor;
 
