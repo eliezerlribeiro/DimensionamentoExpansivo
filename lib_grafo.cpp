@@ -1,3 +1,4 @@
+
 #include "lib_grafo.hpp"
 
 /**
@@ -582,6 +583,13 @@ Vertice::Vertice() {
 	this->informacao.clear();
 	this->tamLista = 0;
 	this->lArestas = new Aresta();
+
+	this->x = 0;
+	this->y = 0;
+	this->Dx = 0;
+	this->Dy = 0;
+	this->raio = 25;
+	this->cor = {255,255,255};
 }
 Vertice::Vertice(const Vertice & cVertice) {
 	this->id = cVertice.GetId();
@@ -590,12 +598,26 @@ Vertice::Vertice(const Vertice & cVertice) {
 	this->lArestas = new Aresta [ tamLista ];
 	for (int i = 0; i < tamLista; i++)
 		this->lArestas[i] = *cVertice.GetAresta(i);
+
+	this->x = 0;
+	this->y = 0;
+	this->Dx = 0;
+	this->Dy = 0;
+	this->raio = 25;
+	this->cor = {255,255,255};
 }
 Vertice::Vertice(int id,const std::string informacao, int tamLista) {
 	this->id = id;
 	this->informacao = informacao;
 	this->tamLista = tamLista;
 	this->lArestas = new Aresta [ tamLista ];
+
+	this->x = 0;
+	this->y = 0;
+	this->Dx = 0;
+	this->Dy = 0;
+	this->raio = 25;
+	this->cor = {255,255,255};
 }
 
 bool Vertice::SetId(int id) {
@@ -663,6 +685,17 @@ bool Vertice::Conexao(int id2) const {
 	}
 	return retorno;
 }
+
+void Vertice::NoLaco() {
+	//implementacao do algoritmo de repulsao e atracao
+}
+void Vertice::NaRenderizacao(SDL_Surface * planoExibicao) {
+	filledCircleRGBA(planoExibicao, this->x, this->y, this->raio, this->cor.r, this->cor.g, this->cor.b, 255);
+}
+
+
+
+
 
 bool Vertice::operator==(int null) {
 	bool retorno = false;

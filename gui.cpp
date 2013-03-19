@@ -156,30 +156,8 @@ bool App::NoInicio() {
 					break;
 			}
 		}
-		int raio = 50;
-		int x = raio;
-		int y = raio;
-		SDL_Color naosei = {255,255,0};
-		for (int i = 0; i < mGrafo->GetTamGrafo();i++) {
-			Vertice * nVertice = new Vertice(mGrafo->GetVertice(i));
-			EntidadeVertice * nNodo = new EntidadeVertice(nVertice, raio);
-			nNodo->x = x;
-			nNodo->y = y;
-			nNodo->cor = naosei;
-			x+= nNodo->raio;
-			//y+= nNodo->raio;
-			Entidade::listaEntidades.push_back(nNodo);
-		}
 
 	} catch (int e) {
-		switch(e) {
-			case 1:
-				cout << "FracFly::NoInic: Erro SDL_Init ";
-				break;
-			case 2:
-				cout << "FracFly::NoInic: Erro SDL_VideoMode ";
-				break;
-		}
 		cout << SDL_GetError();
 		return false;
 	}
@@ -201,24 +179,24 @@ void App::OnExit() {
 
 
 void App::NoLaco() {
+	/**
 	for(int i = 0;i < (int) Entidade::listaEntidades.size();i++) {
 		if(!Entidade::listaEntidades[i]) continue;
 		Entidade::listaEntidades[i]->NoLaco();
 	}
+	**/
 	SDL_Delay(100);
 }
 void App::NaRenderizacao() {
 	SDL_FillRect(planoExibicao, NULL, SDL_MapRGB(planoExibicao->format, 0, 0, 0));
-
-	//lineRGBA(planoExibicao,
-    //           20, 10,
-    //           70, 90,
-    //           255, 0, 0, 255);
-	//ellipseRGBA(planoExibicao,planoExibicao->w / 2, planoExibicao->h / 2, 50, 50, 255, 255, 0, 200);
-
+/**
 	for(int i = 0;i < (int) Entidade::listaEntidades.size();i++) {
 		if(!Entidade::listaEntidades[i]) continue;
 		Entidade::listaEntidades[i]->NaRenderizacao(planoExibicao);
+	}
+**/
+	for(int i = 0;i < mGrafo->GetTamGrafo();i++) {
+		mGrafo->GetVertice(i).NaRenderizacao(planoExibicao);
 	}
 	SDL_UpdateRect(planoExibicao, 0, 0, planoExibicao->w, planoExibicao->h);
 

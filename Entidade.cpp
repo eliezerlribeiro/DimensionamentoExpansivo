@@ -34,20 +34,42 @@ void Entidade::NaLimpeza() {
 }
 
 
-
-EntidadeVertice::EntidadeVertice() {
+/**
+ * Implementacao EntidadeVertice
+ */
+EntidadeVertice::EntidadeVertice() : Entidade() {
 	circulo = new Vertice();
 	raio = 0;
 }
-EntidadeVertice::EntidadeVertice(Vertice * cVertice,int raio) {
+EntidadeVertice::EntidadeVertice(Vertice * cVertice,int raio) : Entidade() {
 	circulo = new Vertice(*cVertice);
 	this->raio = raio;
 }
 void EntidadeVertice::NaRenderizacao(SDL_Surface * planoExibicao) {
-	filledCircleRGBA(planoExibicao, this->x, this->y, this->raio, this->cor.r, this->cor.g, this->cor.b, 200);
-
+	filledCircleRGBA(planoExibicao, this->x, this->y, this->raio, this->cor.r, this->cor.g, this->cor.b, 255);
 }
 
 void EntidadeVertice::NoLaco() {
-	cout << "this->x: " << this->x << " this->y: " << this->y << endl;
+}
+/**
+ * Implementacao EntidadeAresta
+ */
+EntidadeAresta::EntidadeAresta() : Entidade() {
+	reta = new Aresta();
+	this->x2 = 0;
+	this->y2 = 0;
+	dist = 0;
+}
+EntidadeAresta::EntidadeAresta(Aresta * cAresta,int x2, int y2) : Entidade() {
+	reta = new Aresta(*cAresta);
+	this->x2 = x2;
+	this->y2 = y2;
+	dist = 0;
+}
+void EntidadeAresta::NaRenderizacao(SDL_Surface * planoExibicao) {
+	lineRGBA(planoExibicao, this->x, this->y, this->x2, this->y2, this->cor.r , this->cor.g, this->cor.b, 255);
+}
+
+void EntidadeAresta::NoLaco() {
+
 }

@@ -1,5 +1,5 @@
 CC=g++
-OBJ=FEvento.o FSuperficie.o lib_grafo.o Entidade.o gui.o
+OBJ=FEvento.o FSuperficie.o lib_grafo.o gui.o
 
 EXEC=grafo
 

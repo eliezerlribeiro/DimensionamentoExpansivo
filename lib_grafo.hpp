@@ -10,6 +10,9 @@
 #include <climits>
 #include <vector>
 
+#include "SDL/SDL.h"
+#include "SDL/SDL_gfxPrimitives.h"
+
 using namespace std;
 
 
@@ -62,6 +65,14 @@ class Vertice : public Excecao  {
 		Aresta * lArestas;
 		
 	public:
+		int x;
+		int y;
+		int Dx;
+		int Dy;
+		SDL_Color cor;
+		int raio;
+
+	public:
 		Vertice();
 		Vertice(const Vertice & cVertice);
 		Vertice(int id,const std::string, int tamLista);
@@ -80,6 +91,9 @@ class Vertice : public Excecao  {
 		bool		ExisteAresta(int id2) const;
 		bool		Conexao(int id2) const;
 		void 		Mostra() const;
+
+		void NoLaco();
+		void NaRenderizacao(SDL_Surface * planoExibicao);
 
 	public:
 		bool operator==(int null);

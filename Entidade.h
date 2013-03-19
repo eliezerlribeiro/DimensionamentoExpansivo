@@ -44,8 +44,12 @@ public:
 };
 class EntidadeAresta : public Entidade  {
 public:
+	EntidadeAresta();
+	EntidadeAresta(Aresta * cAresta, int x2, int y2);
 	Aresta * reta;
 	int dist;
+	int x2;
+	int y2;
 
 	void NoLaco();
 	void NaRenderizacao(SDL_Surface * planoExibicao);
