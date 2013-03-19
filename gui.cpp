@@ -156,7 +156,15 @@ bool App::NoInicio() {
 					break;
 			}
 		}
-
+		int x = 100;
+		int y = 100;
+		int raio = 5;
+		for (int i=0; i< mGrafo->GetTamGrafo();i++) {
+			 x= (rand()%500) + 50;
+			 y= (rand()%500) + 50;
+			 mGrafo->lVertice[i].setX(x);
+			 mGrafo->lVertice[i].setY(y);
+		}
 	} catch (int e) {
 		cout << SDL_GetError();
 		return false;
@@ -183,46 +191,45 @@ double charge = 2000;  // Repulsão
 double Mass = 0.2;
 
 void App::NoLaco() {
-	for(int i = 0;i < (int) Entidade::listaEntidades.size();i++) {
-		if(!Entidade::listaEntidades[i]) continue;
-		for(int j = 0;j < (int) Entidade::listaEntidades.size();j++) {
-			if(!Entidade::listaEntidades[i]) continue;
+	for(int i = 0;i < (int) mGrafo->GetTamGrafo();i++) {
+		for(int j = 0;j < (int) mGrafo->GetTamGrafo();j++) {
 			if(j != i){
-				double dx = Entidade::listaEntidades[j]->x - Entidade::listaEntidades[i]->x;
-				double dy = Entidade::listaEntidades[j]->y - Entidade::listaEntidades[i]->y;
+				double dx = mGrafo->lVertice[j].x - mGrafo->lVertice[i].x;
+				double dy = mGrafo->lVertice[j].y - mGrafo->lVertice[i].y;
 				double hypotenuse = sqrt(pow(dx, 2) + pow(dy, 2));
-				double force = 0;
-				if (rand()%1){
+				double force = 0;	
+				if ( mGrafo->Vizinho(i , j) ){
 				   force = (hypotenuse -spring) / 2.0;
 				}
 				else{
-				   force = -((Entidade::listaEntidades[j]->raio * Entidade::listaEntidades[i]->raio) / pow(hypotenuse, 2)) * charge;
+				   force = -((mGrafo->lVertice[j].raio * mGrafo->lVertice[i].raio) / pow(hypotenuse, 2)) * charge;
 				}
 				dx /= hypotenuse;
 				dy /= hypotenuse;
 				dx *= force;
 				dy *= force;
-				Entidade::listaEntidades[i]->Dx += dx;
-				Entidade::listaEntidades[i]->Dy += dy;
+				
+				mGrafo->lVertice[i].setDx(mGrafo->lVertice[i].Dx+dx);
+				mGrafo->lVertice[i].setDy(mGrafo->lVertice[i].Dy+dy);
 			}
 		}
-		if(Entidade::listaEntidades[i]->x + Entidade::listaEntidades[i]->Dx < planoExibicao->h)
-			Entidade::listaEntidades[i]->x += Entidade::listaEntidades[i]->Dx;
+		if(mGrafo->lVertice[i].x + mGrafo->lVertice[i].Dx < planoExibicao->h)
+			mGrafo->lVertice[i].setX(mGrafo->lVertice[i].x + mGrafo->lVertice[i].Dx);
 			
-		if(Entidade::listaEntidades[i]->y + Entidade::listaEntidades[i]->Dy < planoExibicao->w)
-			Entidade::listaEntidades[i]->y += Entidade::listaEntidades[i]->Dy;
+		if(mGrafo->lVertice[i].y + mGrafo->lVertice[i].Dy < planoExibicao->w)
+			mGrafo->lVertice[i].setY(mGrafo->lVertice[i].y + mGrafo->lVertice[i].Dy);
 		
-		if(Entidade::listaEntidades[i]->x < 0){
-			Entidade::listaEntidades[i]->x = 1;
+		if(mGrafo->lVertice[i].x < 50){
+			mGrafo->lVertice[i].setX(50);
 		}
 		
-		if(Entidade::listaEntidades[i]->y < 0){
-			Entidade::listaEntidades[i]->y = 1;
+		if(mGrafo->lVertice[i].y < 50){
+			mGrafo->lVertice[i].setY(50);
 		}
 		
-		Entidade::listaEntidades[i]->Dx *= damping;
-		Entidade::listaEntidades[i]->Dy *= damping;
-		Entidade::listaEntidades[i]->NoLaco();
+		mGrafo->lVertice[i].setDx(mGrafo->lVertice[i].Dx * damping);
+		mGrafo->lVertice[i].setDy(mGrafo->lVertice[i].Dy * damping);
+
 	
 	}
 	SDL_Delay(100);
@@ -238,7 +245,16 @@ void App::NaRenderizacao() {
 **/
 	for(int i = 0;i < mGrafo->GetTamGrafo();i++) {
 		mGrafo->GetVertice(i).NaRenderizacao(planoExibicao);
+		for (int j = 0; j < mGrafo->GetTamGrafo(); j++) {
+			 if (mGrafo->Conexao(i,j)) {
+			 lineRGBA(planoExibicao, mGrafo->GetVertice(i).x, mGrafo->GetVertice(i).y, mGrafo->GetVertice(j).x, mGrafo->GetVertice(j).y, mGrafo->GetVertice(i).cor.r , mGrafo->GetVertice(i).cor.g, mGrafo->GetVertice(i).cor.b, 255);
+		 }
+		}
 	}
+
+	
+	
+	
 	SDL_UpdateRect(planoExibicao, 0, 0, planoExibicao->w, planoExibicao->h);
 
 	SDL_Flip(planoExibicao);

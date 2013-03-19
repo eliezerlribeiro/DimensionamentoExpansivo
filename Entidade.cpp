@@ -13,9 +13,14 @@ Entidade::Entidade() {
 	// TODO Auto-generated constructor stub
 	superficie = NULL;
 	this->x = 0;
+	this->Dx = 1;
+	this->raio = 5;
+	
 	this->y = 0;
+	this->Dy = 1;
 	cor = {0,0,0};
 }
+
 
 Entidade::~Entidade() {
 	// TODO Auto-generated destructor stub

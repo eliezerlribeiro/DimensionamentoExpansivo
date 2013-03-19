@@ -584,12 +584,12 @@ Vertice::Vertice() {
 	this->tamLista = 0;
 	this->lArestas = new Aresta();
 
-	this->x = 0;
-	this->y = 0;
-	this->Dx = 0;
-	this->Dy = 0;
-	this->raio = 25;
-	this->cor = {255,255,255};
+	this->x = 5;
+	this->y = 5;
+	this->Dx = 1;
+	this->Dy = 1;
+	this->raio = 5;
+	this->cor = {255,255,0};
 }
 Vertice::Vertice(const Vertice & cVertice) {
 	this->id = cVertice.GetId();
@@ -599,13 +599,28 @@ Vertice::Vertice(const Vertice & cVertice) {
 	for (int i = 0; i < tamLista; i++)
 		this->lArestas[i] = *cVertice.GetAresta(i);
 
-	this->x = 0;
-	this->y = 0;
-	this->Dx = 0;
-	this->Dy = 0;
+	this->x = 6;
+	this->y = 6;
+	this->Dx = 1;
+	this->Dy = 1;
 	this->raio = 25;
-	this->cor = {255,255,255};
+	this->cor = {255,255,0};
 }
+void Vertice::setDx(int X) {
+	this->Dx = X;
+}
+void Vertice::setDy(int Y) {
+	this->Dy = Y;
+}
+void Vertice::setY(int Y) {
+	this->y = Y;
+}
+void Vertice::setX(int X) {
+	this->x = X;
+}
+	
+	
+	
 Vertice::Vertice(int id,const std::string informacao, int tamLista) {
 	this->id = id;
 	this->informacao = informacao;
@@ -690,6 +705,7 @@ void Vertice::NoLaco() {
 	//implementacao do algoritmo de repulsao e atracao
 }
 void Vertice::NaRenderizacao(SDL_Surface * planoExibicao) {
+	cout << this->y << " " << this->x << " " << this->cor.r << " " << endl;
 	filledCircleRGBA(planoExibicao, this->x, this->y, this->raio, this->cor.r, this->cor.g, this->cor.b, 255);
 }
 

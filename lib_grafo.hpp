@@ -80,6 +80,12 @@ class Vertice : public Excecao  {
 	public:
 		bool 		SetId(int id);
 		bool 		SetInformacao(const std::string);
+		void 		setDx(int);
+		void 		setDy(int);
+		void 		setY(int);
+		void 		setX(int);
+		
+		
 		bool 		SetConexao(int id2, int peso);
 		int 		GetId() const;
 		int 		GetTamLista() const;
@@ -147,9 +153,10 @@ class Grafo : public Excecao {
 		int nrElementos;
 		bool direcionado;
 		bool debug;
-		Vertice * lVertice;
+		
 	
 	public:
+		Vertice * lVertice;
 		Grafo();
 		Grafo(const Grafo & cGrafo);
 		Grafo(int tamGrafo);
