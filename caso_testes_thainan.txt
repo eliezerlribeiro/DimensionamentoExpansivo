@@ -1,0 +1,74 @@
+*Vertices 23
+4 "Batata"
+5 "Acerola"
+7 "Alface"
+22 "Banana"
+1 "Beterraba"
+12 "Cenoura"
+2 "Feijão"
+8 "Arroz"
+10 "Agrião"
+11 "Cebola"
+15 "Alho"
+21 "Tomate"
+0 "Milho"
+20 "Ervilha"
+3 "Trigo"
+6 "Abacate"
+9 "Abacaxi"
+13 "Mamão"
+16 "Melão"
+14 "Pêssego"
+19 "Laranja"
+18 "Limão"
+17 "Carambola"
+*Arcs
+0 1 2
+0 1 5
+0 5 32
+10 2 33
+0 3 34
+3 6 22
+6 5 1
+6 8 34
+4 9 21
+5 4 6
+9 10 4
+2 7 52
+3 11 21
+3 12 1
+17 0 44
+15 7 11
+14 0 2
+13 19 22
+19 20 32
+14 13 2
+19 17 2
+15 17 2
+14 15 16
+16 6 12
+8 18 21
+20 16 222
+18 21 1
+21 22 11
+*Queries
+get 1
+ordemtopologica
+get 7
+delete 14
+get 0
+get 3
+get 6
+conexao 0 3
+conexao 3 6
+menorcaminho 0 6
+delete 11
+conexao 2 1
+menorcaminho 4 3
+conexao 0 6
+menorcaminho 6 8
+ordemtopologica
+menorcaminho 5 0
+menorcaminho 0 6
+arvoreminima
+@

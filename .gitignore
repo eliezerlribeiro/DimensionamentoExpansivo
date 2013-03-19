@@ -1,3 +1,9 @@
 #Arquivos objetos compilados
 *.o
 
+#Projeto do Eclipse
+Debug/
+Release/
+
+#executavel
+grafo

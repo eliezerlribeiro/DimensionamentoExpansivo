@@ -1,5 +1,5 @@
 CC=g++
-OBJ=FEvento.o FSuperficie.o gui.o
+OBJ=FEvento.o FSuperficie.o lib_grafo.o Entidade.o gui.o
 
 EXEC=grafo
 
@@ -12,12 +12,18 @@ gui: $(OBJ) gui.o
 gui.o: gui.h gui.cpp
 	rm -rf gui.o
 	$(CC) $(CPPFLAGS) -c gui.cpp
+lib_grafo.o: lib_grafo.hpp lib_grafo.cpp
+	rm -rf lib_grafo.o
+	$(CC) $(CPPFLAGS) -c lib_grafo.cpp
 FEvento.o: FEvento.h FEvento.cpp
 	rm -rf FEvento.o
 	$(CC) $(CPPFLAGS) -c FEvento.cpp
 FSuperficie.o: FSuperficie.h FSuperficie.cpp
 	rm -rf FSuperficie.o
 	$(CC) $(CPPFLAGS) -c FSuperficie.cpp
+Entidade.o: Entidade.h Entidade.cpp
+	rm -rf Entidade.o
+	$(CC) $(CPPFLAGS) -c Entidade.cpp
 
 
 pacotes:
