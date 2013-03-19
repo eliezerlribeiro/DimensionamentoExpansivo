@@ -1,10 +1,9 @@
-/*
- * Entidade.h
- *
- *  Created on: 18/03/2013
- *      Author: andref
+/**
+ * Grupo
+ * André Silva
+ * Eliézer Ribeiro
+ * 
  */
-
 #ifndef ENTIDADE_H_
 #define ENTIDADE_H_
 

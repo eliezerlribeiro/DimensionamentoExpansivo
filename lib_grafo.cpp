@@ -1,4 +1,9 @@
-
+/**
+ * Grupo
+ * André Silva
+ * Eliézer Ribeiro
+ * 
+ */
 #include "lib_grafo.hpp"
 
 /**
@@ -588,7 +593,7 @@ Vertice::Vertice() {
 	this->y = 5;
 	this->Dx = 1;
 	this->Dy = 1;
-	this->raio = 5;
+	this->raio = 10;
 	this->cor = {255,255,0};
 }
 Vertice::Vertice(const Vertice & cVertice) {
@@ -603,7 +608,7 @@ Vertice::Vertice(const Vertice & cVertice) {
 	this->y = 6;
 	this->Dx = 1;
 	this->Dy = 1;
-	this->raio = 25;
+	this->raio = 10;
 	this->cor = {255,255,0};
 }
 void Vertice::setDx(int X) {
@@ -631,7 +636,7 @@ Vertice::Vertice(int id,const std::string informacao, int tamLista) {
 	this->y = 0;
 	this->Dx = 0;
 	this->Dy = 0;
-	this->raio = 25;
+	this->raio = 5;
 	this->cor = {255,255,255};
 }
 

@@ -1,3 +1,10 @@
+/**
+ * Grupo
+ * André Silva
+ * Eliézer Ribeiro
+ * 
+ */
+
 #include "gui.h"
 
 int main(int argc, char* argv[]) {
@@ -186,7 +193,7 @@ void App::OnExit() {
 }
 
 double spring = 2; // atração
-double damping = 2;
+double damping = 0.2;
 double charge = 2000;  // Repulsão
 double Mass = 0.2;
 

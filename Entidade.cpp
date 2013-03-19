@@ -1,10 +1,10 @@
-/*
- * Entidade.cpp
- *
- *  Created on: 18/03/2013
- *      Author: andref
+/**
+ * Grupo
+ * André Silva
+ * Eliézer Ribeiro
+ * 
  */
-
+ 
 #include "Entidade.h"
 
 std::vector<Entidade*> Entidade::listaEntidades;

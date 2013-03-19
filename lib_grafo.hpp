@@ -1,3 +1,10 @@
+/**
+ * Grupo
+ * André Silva
+ * Eliézer Ribeiro
+ * 
+ */
+
 #ifndef _LIB_GRAFO_
 	#define _LIB_GRAFO_
 	
